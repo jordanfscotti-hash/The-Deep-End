@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Deep End — Jordan Scotti, PhD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0 !important; padding: 0 !important; width: 100% !important; overflow-x: hidden !important; }
+.carrd-embed-fix { margin: 0 !important; padding: 0 !important; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0b0f1e;
+  --deep: #0b0f1e;
+  --surface: #111628;
+  --card: #161c30;
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.15);
+  --gold: #c9a96e;
+  --gold-dim: #8a7050;
+  --cream: #f0ebe2;
+  --muted: rgba(240,235,226,0.45);
+  --subtle: rgba(240,235,226,0.25);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--deep);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  
+  
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2.5rem;
+  background: rgba(11,15,30,0.97);
+  
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-brand {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+  text-decoration: none;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream);
+  text-decoration: none;
+  transition: color 0.2s;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+}
+
+.nav-links a:hover { color: var(--cream); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 8rem 2rem 5rem;
+  position: relative;
+  overflow: hidden;
+  background-image: url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(11,15,30,0.96) 0%, rgba(11,15,30,0.98) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 70%, rgba(201,169,110,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 1.75rem;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  max-width: 14ch;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--muted);
+  max-width: 42ch;
+  margin: 0 auto 3rem;
+  line-height: 1.8;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s, border-color 0.25s, color 0.25s;
+  cursor: pointer;
+  background: none;
+}
+
+.hero-cta:hover {
+  background: rgba(201,169,110,0.08);
+  border-color: var(--gold);
+  color: var(--cream);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold-dim), transparent);
+  animation: scrollpulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollpulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 0.8; transform: scaleY(1.1); }
+}
+
+/* DIVIDER */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 2.5rem;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.divider-mark {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--gold-dim);
+  font-style: italic;
+}
+
+/* INTRO SECTION */
+.intro-section {
+  padding: 5rem 2rem;
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-label {
+  font-size: 0.92rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 1.25rem;
+}
+
+.intro-headline {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 300;
+  line-height: 1.25;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+}
+
+.intro-headline em { font-style: italic; color: var(--gold); }
+
+.intro-body {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 1rem;
+}
+
+/* QUIZ SECTION */
+.quiz-section {
+  padding: 4rem 2rem 6rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.quiz-section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.quiz-container {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 3rem;
+}
+
+/* QUIZ INTERNALS */
+.q-screen { display: none; }
+.q-screen.active { display: block; }
+
+.q-eyebrow {
+  font-size: 0.92rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 1.75rem;
+}
+
+.q-intro-title {
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  font-weight: 300;
+  line-height: 1.3;
+  color: var(--cream);
+  margin-bottom: 1rem;
+}
+
+.q-intro-sub {
+  font-size: 1.05rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.q-progress-bar {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 0.5rem;
+}
+
+.q-progress-fill {
+  height: 100%;
+  background: var(--gold-dim);
+  transition: width 0.4s ease;
+}
+
+.q-count {
+  font-size: 0.92rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--subtle);
+  margin-bottom: 1.75rem;
+}
+
+.q-text {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--cream);
+  margin-bottom: 1.75rem;
+}
+
+.q-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.q-opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.9rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--muted);
+  cursor: pointer;
+  line-height: 1.5;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.q-opt:hover {
+  border-color: var(--border-strong);
+  color: var(--cream);
+  background: rgba(255,255,255,0.03);
+}
+
+.q-opt.selected {
+  border-color: var(--gold-dim);
+  color: var(--cream);
+  background: rgba(201,169,110,0.06);
+}
+
+.q-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.75rem;
+}
+
+.q-btn-ghost {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 0.6rem 1.25rem;
+  font-family: var(--sans);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--subtle);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.q-btn-ghost:hover { color: var(--muted); border-color: var(--border-strong); }
+
+.q-btn-next {
+  background: none;
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  padding: 0.6rem 1.75rem;
+  font-family: var(--sans);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  cursor: pointer;
+  opacity: 0.3;
+  pointer-events: none;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.q-btn-next.enabled {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.q-btn-next.enabled:hover {
+  background: rgba(201,169,110,0.08);
+}
+
+/* GATE */
+.gate-title {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.gate-sub {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 1.75rem;
+}
+
+.gate-field { margin-bottom: 1rem; }
+
+.gate-label {
+  display: block;
+  font-size: 0.92rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--subtle);
+  margin-bottom: 0.4rem;
+}
+
+.gate-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--cream);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.gate-input:focus { border-color: var(--gold-dim); }
+.gate-input::placeholder { color: var(--subtle); }
+
+.gate-note {
+  font-size: 0.95rem;
+  color: var(--subtle);
+  margin-top: 0.75rem;
+  line-height: 1.6;
+}
+
+/* RESULT */
+.result-eyebrow {
+  font-size: 0.92rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 0.5rem;
+}
+
+.result-cage-name {
+  font-family: var(--serif);
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.result-tagline {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 1.75rem;
+}
+
+.result-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 1.5rem 0;
+}
+
+.result-section-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 0.6rem;
+}
+
+.result-body {
+  font-size: 1.05rem;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+}
+
+.secondary-wrap { margin-bottom: 1.5rem; }
+
+.cage-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 0.5rem;
+}
+
+.cage-pill {
+  font-size: 1rem;
+  padding: 4px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 20px;
+  color: var(--subtle);
+  letter-spacing: 0.05em;
+}
+
+.result-cta {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+.result-cta-title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 0.4rem;
+}
+
+.result-cta-body {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.retry-link {
+  display: block;
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--subtle);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* COURSE SECTION */
+.course-section {
+  padding: 6rem 2rem;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.course-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.course-headline {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--cream);
+  margin-bottom: 1.25rem;
+}
+
+.course-headline em { font-style: italic; color: var(--gold); }
+
+.course-body {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 1rem;
+  max-width: 52ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.course-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin: 2.5rem 0;
+  text-align: left;
+}
+
+.course-feature {
+  background: var(--card);
+  padding: 1.25rem 1.25rem;
+}
+
+.feature-icon {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--gold-dim);
+  margin-bottom: 0.4rem;
+  font-style: italic;
+}
+
+.feature-label {
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 0.25rem;
+}
+
+.feature-desc {
+  font-size: 0.92rem;
+  color: var(--subtle);
+  line-height: 1.6;
+}
+
+.waitlist-form {
+  display: flex;
+  gap: 0;
+  max-width: 460px;
+  margin: 2rem auto 0;
+}
+
+.waitlist-input {
+  flex: 1;
+  padding: 0.85rem 1.1rem;
+  background: var(--card);
+  border: 1px solid var(--border-strong);
+  border-right: none;
+  border-radius: 2px 0 0 2px;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--cream);
+  outline: none;
+}
+
+.waitlist-input:focus { border-color: var(--gold-dim); }
+.waitlist-input::placeholder { color: var(--subtle); }
+
+.waitlist-btn {
+  padding: 0.85rem 1.5rem;
+  background: none;
+  border: 1px solid var(--gold-dim);
+  border-radius: 0 2px 2px 0;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.waitlist-btn:hover { background: rgba(201,169,110,0.08); }
+
+.waitlist-success {
+  display: none;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--gold);
+  margin-top: 1rem;
+}
+
+.waitlist-note {
+  font-size: 0.95rem;
+  color: var(--subtle);
+  margin-top: 0.75rem;
+  letter-spacing: 0.03em;
+}
+
+/* ABOUT */
+.about-section {
+  padding: 5rem 2rem;
+  max-width: 580px;
+  margin: 0 auto;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.about-name {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 0.25rem;
+}
+
+.about-title {
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 1.5rem;
+}
+
+.about-body {
+  font-size: 1.05rem;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+
+.about-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.about-link {
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.about-link:hover { color: var(--gold); border-color: var(--gold-dim); }
+
+/* FOOTER */
+footer {
+  padding: 2rem 2.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--subtle);
+  font-style: italic;
+}
+
+.footer-note {
+  font-size: 0.95rem;
+  color: var(--subtle);
+  letter-spacing: 0.05em;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  nav { padding: 1rem 1.25rem; }
+  .nav-links { display: none; }
+  .quiz-container { padding: 1.75rem 1.25rem; }
+  .waitlist-form { flex-direction: column; }
+  .waitlist-input { border-right: 1px solid var(--border-strong); border-bottom: none; border-radius: 2px 2px 0 0; }
+  .waitlist-btn { border-radius: 0 0 2px 2px; text-align: center; }
+  footer { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body style="margin:0;padding:0;background:#0b0f1e;">
+
+<nav>
+  <a href="#" class="nav-brand">The Deep End</a>
+  <ul class="nav-links">
+    <li><a href="#quiz">The Quiz</a></li>
+    <li><a href="#course">The Course</a></li>
+    <li><a href="https://jordanscotti.substack.com" target="_blank">Substack</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <p class="hero-eyebrow">Jordan Scotti, PhD</p>
+  <h1 class="hero-title">The strategy that kept you safe is now keeping you <em>small.</em></h1>
+  <p class="hero-sub">You built an identity around being good, capable, needed, beautiful, independent, or rebellious. It worked — until it didn't. This is where the unbuilding begins.</p>
+  <button class="hero-cta" onclick="var el = document.getElementById('quiz'); if(el){ var top = el.getBoundingClientRect().top + window.pageYOffset - 80; window.scrollTo({top: top, behavior: 'smooth'}); }">Find your cage →</button>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="section-divider"><span class="divider-mark">~</span></div>
+
+<!-- INTRO -->
+<section class="intro-section">
+  <p class="section-label">What is a cage?</p>
+  <h2 class="intro-headline">The cages aren't flaws.<br>They're <em>adaptations.</em></h2>
+  <p class="intro-body">Every cage started as a survival strategy. You learned — through praise, punishment, and the subtle grammar of belonging — that a certain version of yourself was acceptable. You built that version carefully. You got very good at it.</p>
+  <p class="intro-body">The problem is you're still living there. And the woman inside the cage has been waiting a long time to be found.</p>
+</section>
+
+<div class="img-break" style="
+  height: 340px;
+  background-image: url('https://images.unsplash.com/photo-1551524559-8af4e6624178?w=1600&q=80');
+  background-size: cover;
+  background-position: center 30%;
+  position: relative;
+  overflow: hidden;
+">
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(11,15,30,0.5), rgba(11,15,30,0.7));"></div>
+  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,3vw,2rem);font-weight:300;font-style:italic;color:#f0ebe2;max-width:40ch;line-height:1.5;position:relative;z-index:1;">The woman inside the cage has been waiting a long time to be found.</p>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<section class="quiz-section" id="quiz">
+  <div class="quiz-section-header">
+    <p class="section-label">Start here</p>
+    <h2 class="intro-headline">Which cage is running your life?</h2>
+  </div>
+
+  <div class="quiz-container">
+
+    <!-- INTRO SCREEN -->
+    <div class="q-screen active" id="qs-intro">
+      <p class="q-eyebrow">The Deep End — Cage Quiz</p>
+      <h3 class="q-intro-title">12 questions. One honest answer each.</h3>
+      <p class="q-intro-sub">Not what you wish were true. Not what sounds healthy. What's actually true right now — in the relationships you're in, the patterns you keep repeating, the fears you don't say out loud.</p>
+      <button class="hero-cta" onclick="startQuiz()" style="font-size:0.7rem;">Begin →</button>
+    </div>
+
+    <!-- QUIZ SCREEN -->
+    <div class="q-screen" id="qs-quiz">
+      <div class="q-progress-bar"><div class="q-progress-fill" id="q-progress"></div></div>
+      <p class="q-count" id="q-count"></p>
+      <p class="q-text" id="q-text"></p>
+      <div class="q-options" id="q-options"></div>
+      <div class="q-nav">
+        <button class="q-btn-ghost" id="q-back" onclick="prevQ()">Back</button>
+        <button class="q-btn-next" id="q-next" onclick="nextQ()">Next</button>
+      </div>
+    </div>
+
+    <!-- GATE SCREEN -->
+    <div class="q-screen" id="qs-gate" style="display:none;">
+    </div>
+
+    <!-- RESULT SCREEN -->
+    <div class="q-screen" id="qs-result">
+      <p class="result-eyebrow">Your primary cage</p>
+      <h3 class="result-cage-name" id="r-cage"></h3>
+      <p class="result-tagline" id="r-tagline"></p>
+      <div class="result-divider"></div>
+      <p class="result-section-label">What this pattern looks like</p>
+      <p class="result-body" id="r-looks"></p>
+      <p class="result-section-label">What it's costing you</p>
+      <p class="result-body" id="r-cost"></p>
+      <p class="result-section-label">Where healing begins</p>
+      <p class="result-body" id="r-heal"></p>
+      <div id="r-secondary-wrap" class="secondary-wrap">
+        <p class="result-section-label">Secondary patterns also present</p>
+        <div class="cage-pills" id="r-secondary"></div>
+      </div>
+      <div class="result-cta" style="margin-bottom:1rem;">
+        <p class="result-cta-title">Get your full profile in your inbox</p>
+        <p class="result-cta-body">Enter your email to receive your complete cage profile — plus essays, embodiment practices, and what sovereignty actually feels like in your body.</p>
+        <button class="hero-cta" onclick="window.open('https://the-deep-end.kit.com/a8de90aa32','_blank')" style="font-size:0.7rem;">Send me my results →</button>
+      </div>
+      <div class="result-cta">
+        <p class="result-cta-title">Ready to go deeper?</p>
+        <p class="result-cta-body">The Deep End is a Substack for women who are done being small. Essays on the cage framework, embodiment, and what sovereignty actually feels like — in your body, not just your head.</p>
+        <button class="hero-cta" onclick="window.open('https://jordanscotti.substack.com','_blank')" style="font-size:0.7rem;">Read The Deep End →</button>
+      </div>
+      <span class="retry-link" onclick="resetQuiz()">Retake the quiz</span>
+    </div>
+
+  </div>
+</section>
+
+<div class="img-break" style="
+  height: 340px;
+  background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80');
+  background-size: cover;
+  background-position: center 40%;
+  position: relative;
+  overflow: hidden;
+">
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(11,15,30,0.55), rgba(11,15,30,0.75));"></div>
+  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,3vw,2rem);font-weight:300;font-style:italic;color:#f0ebe2;max-width:40ch;line-height:1.5;position:relative;z-index:1;">Recognition. Grief. Release. Reclamation. In that order.</p>
+  </div>
+</div>
+
+<!-- COURSE SECTION -->
+<section class="course-section" id="course">
+  <div class="course-inner">
+    <p class="section-label">Coming soon</p>
+    <h2 class="course-headline">The Uncaged:<br><em>A Course for Women Ready to Stop.</em></h2>
+    <p class="course-body">Seven chakras. Six cages. One woman on the other side of all of it. This is a guided journey through the psychology, the body, and the patterns that have been running your life — with lessons, workbook pages, meditations, visualizations, and yoga flows designed to move healing from your head into your body.</p>
+    <p class="course-body">This is not a course about productivity or positivity. It is about recognition, grief, release, and reclamation — in that order.</p>
+
+    <div class="course-features">
+      <div class="course-feature">
+        <div class="feature-icon">I</div>
+        <div class="feature-label">Lessons</div>
+        <div class="feature-desc">Deep-dive psychological frameworks for each cage and chakra</div>
+      </div>
+      <div class="course-feature">
+        <div class="feature-icon">II</div>
+        <div class="feature-label">Workbook</div>
+        <div class="feature-desc">Structured reflection pages that move you from insight to action</div>
+      </div>
+      <div class="course-feature">
+        <div class="feature-icon">III</div>
+        <div class="feature-label">Meditations</div>
+        <div class="feature-desc">Guided audio practices anchored in each chakra's healing work</div>
+      </div>
+      <div class="course-feature">
+        <div class="feature-icon">IV</div>
+        <div class="feature-label">Yoga Flows</div>
+        <div class="feature-desc">Somatic movement sequences that embody what the lessons teach</div>
+      </div>
+    </div>
+
+    <p class="course-body" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.1rem; color:var(--cream);">Join the waitlist to be first in the room.</p>
+
+    <button class="hero-cta" onclick="window.open('https://the-deep-end.kit.com/e71fa18640','_blank')" style="font-size:0.7rem;margin-top:1rem;">Join the waitlist →</button>
+    <p class="waitlist-note" style="margin-top:1rem;">No spam. No timeline promises. Just first access when it's ready.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <p class="section-label">About</p>
+  <h2 class="about-name">Jordan Scotti, PhD</h2>
+  <p class="about-title">Licensed Psychologist · Yoga Teacher · Writer</p>
+  <p class="about-body">I spent years sitting across from women who were exhausted, high-functioning, and completely disconnected from themselves. I also spent years being one of them. The cage framework came out of that — out of clinical work, out of yoga training, out of Jungian psychology, and out of the particular kind of reckoning that happens in midlife when the strategies stop working.</p>
+  <p class="about-body">The Deep End is where I write about what I've learned. Not as advice. As someone who is still in it.</p>
+  <div class="about-links">
+    <a href="https://jordanscotti.substack.com" target="_blank" class="about-link">Substack</a>
+    <a href="https://wildheartmt.com" target="_blank" class="about-link">Clinical Practice</a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-brand">The Deep End</span>
+  <span class="footer-note">© 2026 Jordan Scotti, PhD · Not clinical advice · <a href="https://wildheartmt.com" style="color:inherit;">Wild Heart Psychology</a></span>
+</footer>
+
+<script>
+const questions = [
+  { text: "When someone is upset with you, your first instinct is to:", opts: [
+    { text: "Figure out what you did wrong and fix it immediately", cage: "GG" },
+    { text: "Focus on making them feel better, even if you're hurt too", cage: "N" },
+    { text: "Analyze the situation to understand who's actually at fault", cage: "SS" },
+    { text: "Feel angry first, then wonder if your anger is the problem", cage: "R" },
+    { text: "Worry that they're going to talk shit about you and people will see you differently", cage: "B" }
+  ]},
+  { text: "Your relationship with saying no feels like:", opts: [
+    { text: "Saying no feels like failing someone", cage: "N" },
+    { text: "I can say it, but I always over-explain why", cage: "GG" },
+    { text: "I say \"no\" but usually end up doing whatever they asked anyway", cage: "SS" },
+    { text: "I say no and forget about it. Let the haters hate.", cage: "R" },
+    { text: "It depends — sometimes I can say no, but depending on who's watching I find myself saying yes to things I hate", cage: "B" }
+  ]},
+  { text: "If you stopped achieving — stopped producing, accomplishing, excelling — you believe:", opts: [
+    { text: "People would stop respecting me", cage: "A" },
+    { text: "I wouldn't know who I am", cage: "A" },
+    { text: "People would finally see the real me and be disappointed", cage: "GG" },
+    { text: "I'd lose my independence and have to rely on others", cage: "SS" },
+    { text: "Good. The whole achievement treadmill was never mine to begin with.", cage: "R" },
+    { text: "Guilty — like I'd be letting everyone who depends on me down", cage: "N" }
+  ]},
+  { text: "You're at a social gathering. You're most likely to:", opts: [
+    { text: "Monitor the emotional temperature and match the vibe of the crew", cage: "GG" },
+    { text: "Make sure everyone has what they need — checking on drinks, snacks, making people feel welcome", cage: "N" },
+    { text: "Make sure I have what I need and quietly map out my exit strategy if it goes too long", cage: "SS" },
+    { text: "Shake things up — challenge the consensus, suggest a different venue, or mention the elephant in the room", cage: "R" },
+    { text: "Make sure I look my best and find myself checking my appearance throughout the night", cage: "B" },
+    { text: "Share pics from my last trip, give unsolicited tips on meal prepping, and mention how impossibly busy I've been", cage: "A" }
+  ]},
+  { text: "Your body and how you exist in it:", opts: [
+    { text: "I'm painfully aware of how my body is perceived by others", cage: "B" },
+    { text: "I'm often unaware of my body — I live in my head", cage: "SS" },
+    { text: "I use my body to take care of others more than to feel my own feelings", cage: "N" },
+    { text: "My body holds tension constantly — like it's always bracing for something", cage: "GG" },
+    { text: "My body is a site of resistance — I've had to fight to feel at home in it", cage: "R" },
+    { text: "My body is a tool — I fuel it, train it, and push it to keep up with everything I demand of it", cage: "A" }
+  ]},
+  { text: "When you think about asking for help, you feel:", opts: [
+    { text: "I avoid it as much as possible — it makes me feel less capable", cage: "SS" },
+    { text: "Guilty — because others need more than I do", cage: "N" },
+    { text: "Anxious about being a burden or being judged", cage: "GG" },
+    { text: "Fine asking, but only from people I've already vetted", cage: "R" },
+    { text: "Like it might make me look less put-together", cage: "B" },
+    { text: "I usually don't — it only slows me down when I have to work with others", cage: "A" }
+  ]},
+  { text: "The compliment that lands deepest for you is:", opts: [
+    { text: "\"You're so easy to be around\"", cage: "GG" },
+    { text: "\"You're so helpful — I couldn't do it without you\"", cage: "N" },
+    { text: "\"You're so independent and capable\"", cage: "SS" },
+    { text: "\"You are so brave!\"", cage: "R" },
+    { text: "\"You're gorgeous\"", cage: "B" },
+    { text: "\"I don't know how you do it all — you're incredible\"", cage: "A" }
+  ]},
+  { text: "When a relationship ends or a friendship fades, you tend to:", opts: [
+    { text: "Replay every interaction looking for what you did wrong", cage: "GG" },
+    { text: "Grieve all the time and effort invested — even while you miss giving to them", cage: "N" },
+    { text: "Process it alone and present as fine to the world", cage: "SS" },
+    { text: "Feel angry at the injustice of it before you feel sad", cage: "R" },
+    { text: "Wonder what others think about what happened — and how it reflects on you", cage: "B" },
+    { text: "Channel it into work and forward momentum", cage: "A" }
+  ]},
+  { text: "Resting — doing nothing, producing nothing — feels:", opts: [
+    { text: "Like I'm falling behind", cage: "A" },
+    { text: "Self-indulgent when others need things from me", cage: "N" },
+    { text: "Fine in theory, impossible in practice — my mind won't stop", cage: "SS" },
+    { text: "Like a radical act I have to consciously choose", cage: "R" },
+    { text: "Uncomfortable unless I look like I'm resting beautifully — and honestly, there might be a selfie involved", cage: "B" },
+    { text: "Possible only once everyone else is taken care of", cage: "GG" }
+  ]},
+  { text: "The fear you don't say out loud is:", opts: [
+    { text: "That my authentic self is not actually likeable", cage: "GG" },
+    { text: "That if I stop giving, no one will stay", cage: "N" },
+    { text: "That I need people more than I want to admit", cage: "SS" },
+    { text: "That underneath I'm just like everybody else", cage: "R" },
+    { text: "That I have no value without a top notch face card", cage: "B" },
+    { text: "That my achievements are the only interesting thing about me", cage: "A" }
+  ]},
+  { text: "Your relationship with anger looks like:", opts: [
+    { text: "I swallow it or apologize for having it", cage: "GG" },
+    { text: "I feel it on behalf of others before I feel it for myself", cage: "N" },
+    { text: "I transform it into strategy and forward motion", cage: "SS" },
+    { text: "I feel it and I use it — sometimes too loudly", cage: "R" },
+    { text: "It comes out when I feel unchosen or replaced", cage: "B" },
+    { text: "I feel it when my work is undervalued or overlooked", cage: "A" }
+  ]},
+  { text: "What you're most hungry for right now — not what you think you should want, but what you actually crave:", opts: [
+    { text: "Permission to be myself without having to censor or apologize", cage: "GG" },
+    { text: "Someone who shows up for me the way I show up for everyone", cage: "N" },
+    { text: "To need something and not be ashamed of it", cage: "SS" },
+    { text: "To stop being so reactive — and finally feel some peace", cage: "R" },
+    { text: "To feel at home in my body at any age, any size", cage: "B" },
+    { text: "To be loved for who I am, not what I produce", cage: "A" }
+  ]}
+];
+
+const cageData = {
+  GG: {
+    name: "The Good Girl",
+    tagline: "You learned that being loved meant being easy to love.",
+    looks: "You read every room before you enter it. You pre-apologize. You soften your needs into suggestions and your opinions into questions. You are extraordinarily attuned to other people's emotional states — because you learned early that your safety depended on managing them. You say sorry reflexively, sometimes before you even know what you've done. Without even being consciously aware of it, you edit yourself constantly — your volume, your needs, your reactions — based on your assessment of what the room can handle. You have become so good at anticipating what others need that you have almost no access to what you need.",
+    cost: "You've become an expert at being palatable and a stranger to being known. The compliance that protected you in childhood is now the thing keeping you from being truly seen. You have spent so long managing other people's comfort that your own discomfort has become white noise — something you no longer hear. And the cruelest part: the people around you have no idea. They experience you as easy, agreeable, low-maintenance. They don't know what it costs you to be that way.",
+    heal: "Healing begins at the root — in the body's oldest sense of safety. Your work is learning that you can be disagreeable and inconvenient and still belong. Still be loved. The Good Girl's first act of sovereignty is letting someone be disappointed in you and surviving it. Not fixing it. Not explaining it. Not apologizing for it. Just sitting in the discomfort of their disappointment and discovering that you are still whole on the other side. And trusting that the people worth keeping will not leave because you finally told the truth."
+  },
+  N: {
+    name: "The Nurturer",
+    tagline: "You outsourced your desires so long ago you forgot they were ever yours.",
+    looks: "You know what everyone around you needs. Their coffee order, their emotional state, their unspoken fears, the thing they need to hear before they can sleep. What you don't know — what you have never been particularly good at — is what you want. Even for something as simple as dinner. You have built your identity around being indispensable, equated your worth to your usefulness. And so you give. And give. And give. You are the person everyone calls in a crisis. You are also the person who has no idea what her own crisis looks like because you have never let yourself have one.",
+    cost: "Your own desires have atrophied from disuse. You feel guilty resting, spending money on yourself, or being the one who needs tending. You have confused chronic self-sacrifice with loyalty and exhaustion with devotion. Somewhere along the way the giving stopped being a choice and became a compulsion — and now you don't know how to stop without feeling like you are failing the people you love. Beneath the generosity is a question you have never let yourself answer: if I stop giving, will anyone stay? You already know the answer is probably yes. The cage just won't let you test it.",
+    heal: "Healing begins in the sacral — in the slow, uncomfortable reclamation of desire as something you are allowed to have. Your work is not grand. It is tiny and daily and it will feel unbearably selfish at first. It is identifying what you want before you figure out what everyone else needs. It is letting someone else handle the crisis for once. It is ordering what you actually want off the menu instead of what's easiest. The question is not how can I help. It is what do I actually want. You are allowed to not know the answer yet. You are also allowed to find out."
+  },
+  A: {
+    name: "The Achiever",
+    tagline: "You built something impressive and called it a self.",
+    looks: "You are capable, driven, and relentless. You also cannot stop. Your calendar is full because stillness feels like falling behind, and falling behind feels like disappearing. You have learned to convert every feeling into a task, every wound into fuel, every setback into a strategy for next time. From the outside you look like someone who has it together. In so many ways, you do. But from the inside you have flashes of clarity where you see the endless striving for what it is: a hamster wheel for your fear. All the endless productivity is not simple ambition. It is armor.",
+    cost: "Your worth has become entirely conditional — contingent on the next accomplishment, the next promotion, the next metric. You have optimized yourself into efficiency and lost the thread back to who you are when you are not producing. Relationships suffer because you bring the same performance orientation to love that you bring to work. Rest is more than just uncomfortable. Play feels like a waste. And the cruelest part of the Achiever cage is that the culture rewards you for staying in it. Nobody tells you to stop. They give you an award and ask you to volunteer for another board position. The cage looks so much like success that questioning it feels like insanity at first.",
+    heal: "Healing begins in the solar plexus — in reclaiming a sense of personal power that does not depend on output. Your work is sitting with the question that terrifies you most: who am I when I am not achieving anything? Not what would I do. Who would I be. The answer exists. She has always existed. You have just been too busy to meet her. She is not less than the woman who earned all the certificates and won all the awards. She is what all that winning was supposed to be in service of."
+  },
+  B: {
+    name: "The Beauty",
+    tagline: "You learned that being chosen and admired was the most important thing you could be.",
+    looks: "You are exquisitely attuned to how you appear in every room you enter. You learned early that being looked at approvingly offered safety, attention, and praise — and together, these felt like belonging. But it also meant that your value shifted depending on who was watching and whether they liked what they saw. So you learned to curate carefully. You are acutely aware of signs of aging, fluctuations in weight, your best angle in a photograph. You monitor when you're the most attractive woman in the room and when you're not. You do it on autopilot. You have been trained to spend far more time monitoring your body than inhabiting it.",
+    cost: "Your body has become a project rather than a home. Pleasure is complicated when appearance is always the subtext. And aging — which is simply time moving forward — is now loaded with dread because the cage told you that your visibility, your relevance, your being chosen, depends on a particular kind of beauty that has an expiration date. The exhausting part isn't the skincare routine or the gym. It's the constant auditing and self-monitoring. The feeling that you must do more to maximize your looks while you still can.",
+    heal: "Beauty doesn't fade. It transforms. The cage told you that your power lived in a specific window of time and a specific kind of face — but that was never true. It was just the only story you were given. Healing begins when you return to your body not as a surface to be evaluated but as the place you actually live. Where sensation matters more than appearance. When you stop performing rest and start actually resting. The woman on the other side of this cage is not less visible. She is visible in a way that cannot be taken from her."
+  },
+  SS: {
+    name: "The Self-Sufficient Woman",
+    tagline: "You made not needing anyone your greatest achievement.",
+    looks: "You handle things. Efficiently, competently, without making it anyone else's problem. You have high standards, strong opinions, and a deep discomfort with dependence — yours or anyone else's. You are genuinely capable, which is what makes this cage so hard to see. From the outside you look like someone who has it completely figured out. From the inside you know the self-sufficiency is not just a strength — it's also a wall. You process untold amounts of feelings and thoughts alone, all while presenting as fine on the outside. You'll stay up until midnight working on a house repair that a friend could have done in ten minutes and for free. And why? Because at some point you confused dependence with weakness.",
+    cost: "You've built an identity around not requiring anything from anyone — which means you've also quietly cut yourself off from being truly supported, truly known, or truly held. The exhaustion is real. So is the loneliness — though you'd be the last person to call it that. You've become so good at appearing fine that the people who love you have stopped checking. Not because they don't care. Because you trained them not to worry.",
+    heal: "The Self-Sufficient Woman's healing lives in the third eye — in learning to trust the body's felt sense of knowing over constant analysis. You have spent so long living in your head that your body's signals have become background noise. Healing begins not with a grand vulnerability but with a small one: saying \"I don't know\" out loud. Letting someone bring you dinner when you're sick without immediately plotting how you'll repay them. Asking for help with something you could technically handle alone. It's learning that you are allowed to be held. That is not weakness. That is the whole point of relationships."
+  },
+  R: {
+    name: "The Rebel",
+    tagline: "You escaped the cage — but you're still defined by it.",
+    looks: "You push back. You resist expectations, question authority, and refuse to perform femininity on anyone else's terms. You have done real work to get here and paid real costs for it. You say what others won't. You leave relationships and jobs and situations that don't deserve you. You have been called difficult, intimidating, too much — and you have learned to wear those labels like armor. But here's the thing about rebellion: it is still a response. The Rebel's identity is still organized around the cage — just in opposition to it rather than compliance with it. You left. But you're still defined by it.",
+    cost: "The anger is real and it is valid. And it can also become its own container. When every relationship becomes a power negotiation, every institution an enemy, and every attempt at closeness a potential betrayal — you have traded one kind of exhaustion for another. The people who love you sometimes feel like they are navigating a minefield. Not because you are wrong about the things that hurt you. But because the defenses that protected you are now keeping out the very things you actually want. Peace. Softness. The relief of not having to fight for a single afternoon.",
+    heal: "Healing begins in the heart — in the hard, unglamorous work of grieving what the cage cost you without letting that grief become your permanent address. Your work is finding the voice that isn't performing for anyone's expectations — including the expectation that you'll always push back. Sovereignty is quieter than rebellion. It doesn't need an audience. It doesn't need to win. It just needs to be true to the moment. The woman on the other side of this cage is not tame. Or boring. She is not less. She is someone who finally stopped spending her energy on the fight and started spending it on herself."
+  }
+};
+
+let answers = {}, currentQ = 0;
+
+function startQuiz() {
+  showQ('qs-quiz');
+  renderQ();
+}
+
+function showQ(id) {
+  document.querySelectorAll('.q-screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function renderQ() {
+  const q = questions[currentQ];
+  const total = questions.length;
+  document.getElementById('q-progress').style.width = ((currentQ / total) * 100) + '%';
+  document.getElementById('q-count').textContent = 'Question ' + (currentQ + 1) + ' of ' + total;
+  document.getElementById('q-text').textContent = q.text;
+  const container = document.getElementById('q-options');
+  container.innerHTML = '';
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'q-opt' + (answers[currentQ] === i ? ' selected' : '');
+    btn.textContent = opt.text;
+    btn.onclick = () => selectOpt(i);
+    container.appendChild(btn);
+  });
+  document.getElementById('q-back').style.visibility = currentQ === 0 ? 'hidden' : 'visible';
+  const nxt = document.getElementById('q-next');
+  nxt.textContent = currentQ === total - 1 ? 'See results' : 'Next';
+  nxt.classList.toggle('enabled', answers[currentQ] !== undefined);
+}
+
+function selectOpt(i) {
+  answers[currentQ] = i;
+  document.querySelectorAll('.q-opt').forEach((b, idx) => b.classList.toggle('selected', idx === i));
+  document.getElementById('q-next').classList.add('enabled');
+}
+
+function nextQ() {
+  if (answers[currentQ] === undefined) return;
+  if (currentQ < questions.length - 1) { currentQ++; renderQ(); }
+  else showQ('qs-gate');
+}
+
+function prevQ() {
+  if (currentQ > 0) { currentQ--; renderQ(); }
+}
+
+function submitGate() {
+  showResults();
+}
+
+function showResults() {
+  const scores = { GG:0, N:0, A:0, B:0, SS:0, R:0 };
+  questions.forEach((q, qi) => {
+    const ai = answers[qi];
+    if (ai !== undefined && q.opts[ai]) scores[q.opts[ai].cage]++;
+  });
+  const sorted = Object.entries(scores).sort((a,b) => b[1]-a[1]);
+  const primary = sorted[0][0];
+  const secondaries = sorted.slice(1,3).filter(s => s[1] > 0).map(s => cageData[s[0]].name);
+  const d = cageData[primary];
+  document.getElementById('r-cage').textContent = d.name;
+  document.getElementById('r-tagline').textContent = d.tagline;
+  document.getElementById('r-looks').textContent = d.looks;
+  document.getElementById('r-cost').textContent = d.cost;
+  document.getElementById('r-heal').textContent = d.heal;
+  const sw = document.getElementById('r-secondary-wrap');
+  const sd = document.getElementById('r-secondary');
+  sd.innerHTML = '';
+  if (secondaries.length > 0) {
+    secondaries.forEach(n => {
+      const pill = document.createElement('span');
+      pill.className = 'cage-pill';
+      pill.textContent = n;
+      sd.appendChild(pill);
+    });
+    sw.style.display = 'block';
+  } else { sw.style.display = 'none'; }
+  showQ('qs-result');
+}
+
+function resetQuiz() {
+  answers = {}; currentQ = 0;
+  showQ('qs-intro');
+}
+
+function submitWaitlist(e) {
+  e.preventDefault();
+  const email = document.getElementById('w-email').value.trim();
+  if (!email) return;
+  fetch('https://api.convertkit.com/v3/forms/9657232/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      api_key: 'KzH5tWRuMq6R-mhjnWRG0A',
+      email: email
+    })
+  }).catch(function(){});
+  document.querySelector('.waitlist-form').style.display = 'none';
+  document.getElementById('waitlist-success').style.display = 'block';
+}
+</script>
+</body>
+</html>
